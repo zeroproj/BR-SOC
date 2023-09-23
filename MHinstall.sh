@@ -10,12 +10,10 @@ EFolder=$(dirname $0)
 #Desenvolvido por Lucas Matheus e Gabriel
 #################################################
 function install_dependencies() {
-    apt-get install apt-transport-https zip unzip lsb-release curl gnupg
+    apt-get install apt-transport-https zip unzip lsb-release curl gnupg    
 }
 function install_elasticsearch() {
-    apt-get install apt-transport-https zip unzip lsb-release curl gnupg
     echo -e "- Instalando Pacotes Necessarios"
-    apt-get install apt-transport-https zip unzip lsb-release curl gnupg
     #Elasticsearch Install
     echo -e "- Configurando Repositorio"
     curl -s https://artifacts.elastic.co/GPG-KEY-elasticsearch | gpg --no-default-keyring --keyring gnupg-ring:/usr/share/keyrings/elasticsearch.gpg --import && chmod 644 /usr/share/keyrings/elasticsearch.gpg
@@ -24,7 +22,7 @@ function install_elasticsearch() {
     echo -e "- Instalando Pacotes Elasticsearch"
     apt-get install elasticsearch=7.17.12
     echo -e "- Baixando arquivo de configuração"
-    curl -so /etc/elasticsearch/elasticsearch.yml https://packages.wazuh.com/4.5/tpl/elastic-basic/elasticsearch_all_in_one.yml
+    curl -so /etc/elasticsearch/elasticsearch.yml https://raw.githubusercontent.com/zeroproj/MHSoc/main/MHConf/elasticsearch.yml?token=GHSAT0AAAAAACH7RYRWE6J3G6CZVE5MUOMOZIPN55A
 }
 if [ "$(id -u)" != "0" ];then
     echo ""
