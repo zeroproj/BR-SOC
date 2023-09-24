@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 echo "###########################################################################"
-echo "################# INSTALAÇÃO PROTEÇÃO KASPERSKY ENDPOINT ##################"
+echo "#################                   MHSOC                ##################"
 echo "##############           OS: Ubuntu LTS                     ###############"
 echo -e "############################################################### MHHSOC ####\n"
 P_01="$1" #Parametro 1 - Não Alterar 
@@ -64,6 +64,7 @@ else
         echo "É necessario definir argumento para instalação do Kaspersky
         Argumentos                   Ação
         -a       | Instalação automatizada
+        -n       | Instalacão de Modulos
         -s       | Sobre o Script
         * Recomendado para instalação\nExemplo: script.sh [argumento]"
         exit 0
