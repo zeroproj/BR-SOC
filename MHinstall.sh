@@ -4,14 +4,7 @@ echo "##########################################################################
 echo "#################                   MHSOC                ##################"
 echo "##############           OS: Ubuntu LTS                     ###############"
 echo -e "############################################################### MHHSOC ####\n"
-
-#################################################
-P_01="$1" #Parametro 1 - Não Alterar
 dic_temp=/opt/MHSOC/
-EFolder=$(dirname $0)
-senha_elastic=""
-#Desenvolvido por Lucas Matheus e Gabriel
-#################################################
 if [ "$(id -nu)" != "root" ];then
     echo ""
     echo "###########################################################################"
@@ -21,32 +14,14 @@ if [ "$(id -nu)" != "root" ];then
 else
     if [ ! -d $dic_temp ]; then
         mkdir -m 755 -p $dic_temp
-        mv 
+        mv * $dic_temp
     else
         echo "BETA"
-        #rm -rf /tmp/MHSOC/*
+        rm -rf $dic_temp'*'
+        mv * $dic_temp
     fi
-    if [[ $P_01 = "-help" || $P_01 = "" ]]; then
-        echo "É necessario definir argumento para instalação do Kaspersky
-        Argumentos                   Ação
-        -a       | Instalação automatizada
-        -n       | Instalacão de Modulos
-        -s       | Sobre o Script
-        * Recomendado para instalação\nExemplo: script.sh [argumento]"
-        exit 0
-    elif [ $P_01 = "-a" ]; then
-        MHSys/dep.sh
-        if [ $? -eq 0 ]; then
-            echo "O script dep.sh foi concluído com sucesso."
-        else
-            echo "O script dep.sh falhou. Código de saída: $?"
-        fi
-        MHSys/elastic.sh
-        if [ $? -eq 0 ]; then
-            echo "O script dep.sh foi concluído com sucesso."
-        else
-            echo "O script dep.sh falhou. Código de saída: $?"
-        fi
-    fi
+    ln -s $dic_temp/MHSys/mhsoc.sh /usr/local/bin/MHSoc
+    chmod +x $dic_temp/MHSys/mhsoc.sh
+    chmod +x /usr/local/bin/MHSoc
 fi
     
