@@ -1,4 +1,5 @@
 #!/bin/bash
+install_dir="/opt/MHSOC/"
 senha_elastic=""
 #########################################################
 function install_elasticsearch() {
@@ -15,11 +16,13 @@ function install_elasticsearch() {
 }
 function config_elasticsearch() {
     echo -e "- Baixando arquivo de configuração Elasticsearch"
-    curl -so /etc/elasticsearch/elasticsearch.yml https://raw.githubusercontent.com/zeroproj/MHSoc/main/MHConf/elasticsearch.yml?token=GHSAT0AAAAAACH7RYRWE6J3G6CZVE5MUOMOZIPN55A
+    ln -s $install_dir'MHConf/elasticsearch.yml' /etc/elasticsearch/elasticsearch.yml
+    #curl -so /etc/elasticsearch/elasticsearch.yml https://raw.githubusercontent.com/zeroproj/MHSoc/main/MHConf/elasticsearch.yml?token=GHSAT0AAAAAACH7RYRWE6J3G6CZVE5MUOMOZIPN55A
 }
 function config_cert() {
     echo -e "- Baixando arquivo de configuração Certificado"
-    curl -so /usr/share/elasticsearch/instances.yml https://raw.githubusercontent.com/zeroproj/MHSoc/main/MHConf/instances.yml?token=GHSAT0AAAAAACH7RYRWBKO2VO55LBIW7GAGZIPO23Q
+    ln -s $install_dir'MHConf/instances.yml' /usr/share/elasticsearch/instances.yml
+    #curl -so /usr/share/elasticsearch/instances.yml https://raw.githubusercontent.com/zeroproj/MHSoc/main/MHConf/instances.yml?token=GHSAT0AAAAAACH7RYRWBKO2VO55LBIW7GAGZIPO23Q
     /usr/share/elasticsearch/bin/elasticsearch-certutil cert ca --pem --in instances.yml --keep-ca-key --out ~/certs.zip
     unzip ~/certs.zip -d ~/certs
     mkdir /etc/elasticsearch/certs/ca -p
