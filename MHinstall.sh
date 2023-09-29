@@ -4,6 +4,8 @@ echo "##########################################################################
 echo "#################                   MHSOC                ##################"
 echo "##############           OS: Ubuntu LTS                     ###############"
 echo -e "############################################################### MHHSOC ####\n"
+
+#################################################
 P_01="$1" #Parametro 1 - Não Alterar
 dic_temp=/opt/MHSOC/
 EFolder=$(dirname $0)
@@ -19,6 +21,7 @@ if [ "$(id -nu)" != "root" ];then
 else
     if [ ! -d $dic_temp ]; then
         mkdir -m 755 -p $dic_temp
+        mv 
     else
         echo "BETA"
         #rm -rf /tmp/MHSOC/*
