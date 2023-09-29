@@ -27,13 +27,13 @@ else
         * Recomendado para instalação\nExemplo: script.sh [argumento]"
         exit 0
     elif [ $P_01 = "-a" ]; then
-        MHSys/dep.sh
+        $dic_temp'MHSys/dep.sh'
         if [ $? -eq 0 ]; then
             echo "O script dep.sh foi concluído com sucesso."
         else
             echo "O script dep.sh falhou. Código de saída: $?"
         fi
-        MHSys/elastic.sh
+        $dic_temp'MHSys/elastic.sh'
         if [ $? -eq 0 ]; then
             echo "O script dep.sh foi concluído com sucesso."
         else

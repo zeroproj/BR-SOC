@@ -21,7 +21,7 @@ else
         mv * $dic_temp
     fi
     ln -s $dic_temp/MHSys/mhsoc.sh /usr/local/bin/MHSoc
-    chmod +x $dic_temp/MHSys/mhsoc.sh
     chmod +x /usr/local/bin/MHSoc
+    chmod +x $dic_temp'/MHSys/*.sh'
 fi
     
