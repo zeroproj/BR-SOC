@@ -16,11 +16,13 @@ function install_elasticsearch() {
 }
 function config_elasticsearch() {
     echo -e "- Baixando arquivo de configuração Elasticsearch"
+    rm /etc/elasticsearch/elasticsearch.yml
     ln -s $install_dir'MHConf/elasticsearch.yml' /etc/elasticsearch/elasticsearch.yml
     #curl -so /etc/elasticsearch/elasticsearch.yml https://raw.githubusercontent.com/zeroproj/MHSoc/main/MHConf/elasticsearch.yml?token=GHSAT0AAAAAACH7RYRWE6J3G6CZVE5MUOMOZIPN55A
 }
 function config_cert() {
     echo -e "- Baixando arquivo de configuração Certificado"
+    rm /usr/share/elasticsearch/instances.yml
     ln -s $install_dir'MHConf/instances.yml' /usr/share/elasticsearch/instances.yml
     #curl -so /usr/share/elasticsearch/instances.yml https://raw.githubusercontent.com/zeroproj/MHSoc/main/MHConf/instances.yml?token=GHSAT0AAAAAACH7RYRWBKO2VO55LBIW7GAGZIPO23Q
     /usr/share/elasticsearch/bin/elasticsearch-certutil cert ca --pem --in instances.yml --keep-ca-key --out ~/certs.zip
@@ -36,14 +38,13 @@ function start_elasticsearch() {
     systemctl start elasticsearch
 }
 function gerate_user_elasticsearch() {
-    /usr/share/elasticsearch/bin/elasticsearch-setup-passwords auto > $dic_temp"senhas.txt"
+    /usr/share/elasticsearch/bin/elasticsearch-setup-passwords auto > $install_dir"senhas.txt"
     senha_elastic=$(grep 'PASSWORD elastic' senhas.txt | awk '{print $NF}')
 }
 if [ "$(id -u)" != "0" ]; then
     echo "Este script deve ser executado como root."
     exit 1
 fi
-install_dependencies
 install_elasticsearch
 config_elasticsearch
 config_cert
