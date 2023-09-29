@@ -1,43 +1,31 @@
 #!/bin/bash
 clear
-echo "###########################################################################"
-echo "#################                   MHSOC                ##################"
-echo "##############           OS: Ubuntu LTS                     ###############"
-echo -e "############################################################### MHHSOC ####\n"
-#################################################
-P_01="$1" #Parametro 1 - Não Alterar
-dic_temp=/opt/MHSOC/
-EFolder=$(dirname $0)
-senha_elastic=""
-#Desenvolvido por Lucas Matheus e Gabriel
-#################################################
-if [ "$(id -nu)" != "root" ];then
-    echo ""
-    echo "###########################################################################"
-    echo "            Voce deve ter poder de root par executar este scrip.           "
-    echo "###########################################################################"
-    exit 0
-else
-    if [[ $P_01 = "-help" || $P_01 = "" ]]; then
-        echo "É necessario definir argumento para instalação do Kaspersky
-        Argumentos                   Ação
-        -a       | Instalação automatizada
-        -n       | Instalacão de Modulos
-        -s       | Sobre o Script
-        * Recomendado para instalação\nExemplo: script.sh [argumento]"
-        exit 0
-    elif [ $P_01 = "-a" ]; then
-        $dic_temp'MHSys/dep.sh'
-        if [ $? -eq 0 ]; then
-            echo "O script dep.sh foi concluído com sucesso."
-        else
-            echo "O script dep.sh falhou. Código de saída: $?"
-        fi
-        $dic_temp'MHSys/elastic.sh'
-        if [ $? -eq 0 ]; then
-            echo "O script dep.sh foi concluído com sucesso."
-        else
-            echo "O script dep.sh falhou. Código de saída: $?"
-        fi
-    fi
+if [ "$(id -u)" != "0" ]; then
+    whiptail --title "Autentificação requerida" --msgbox "Este script requer privilégios de administrador. Execute-o como root." 12 50
+    exit 1
 fi
+dic_temp=/opt/MHSOC/
+choice=$(whiptail --title "MHSOC" --menu "O que você deseja fazer?" 12 50 4 \
+    "1" "Instalação automatizada" \
+    "2" "Instalacão de Modulos" \
+    "0" "Cancelar a instalação" 3>&1 1>&2 2>&3)
+case $choice in
+    1)
+        $dic_temp'MHSys/dep.sh'
+        $dic_temp'MHSys/elastic.sh'
+        whiptail --title "Instalação Concluída" --msgbox "A instalação foi concluída com sucesso." 12 50
+        ;;
+    2)
+        whiptail --title "Instalação Cancelada" --msgbox "A instalação foi cancelada." 12 50
+        exit 0
+        ;;
+    *)
+        whiptail --title "Escolha Inválida" --msgbox "Escolha inválida. A instalação foi cancelada." 12 50
+        exit 1
+        ;;
+esac
+#if [ $? -eq 0 ]; then
+#    echo "O script dep.sh foi concluído com sucesso."
+#else
+#    echo "O script dep.sh falhou. Código de saída: $?"
+#fi

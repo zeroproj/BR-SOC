@@ -23,6 +23,9 @@ install_dir="/opt/MHSOC/"
 if [ ! -d "$install_dir" ]; then
     mkdir -m 755 -p "$install_dir"
     mv * "$install_dir"
+    ln -s $install_dir'MHSys/mhsoc.sh' /usr/local/bin/MHSoc
+    chmod +x /usr/local/bin/MHSoc
+    chmod +x $install_dir'/MHSys/*.sh'
     whiptail --title "Instalação Concluída" --msgbox "A instalação foi concluída com sucesso." 12 50
 else
     choice=$(whiptail --title "Versão Anterior Detectada" --menu "O que você deseja fazer?" 12 50 4 \
@@ -32,6 +35,10 @@ else
         1)
             rm -rf "$install_dir"*
             mv * "$install_dir"
+            rm /usr/local/bin/MHSoc
+            ln -s $install_dir'MHSys/mhsoc.sh' /usr/local/bin/MHSoc
+            chmod +x /usr/local/bin/MHSoc
+            chmod +x $install_dir'/MHSys/*.sh'
             whiptail --title "Instalação Concluída" --msgbox "A instalação foi concluída com sucesso." 12 50
             ;;
         2)

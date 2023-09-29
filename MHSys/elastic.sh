@@ -1,6 +1,4 @@
 #!/bin/bash
-dic_temp=/opt/MHSOC/
-EFolder=$(dirname $0)
 senha_elastic=""
 #########################################################
 function install_elasticsearch() {
