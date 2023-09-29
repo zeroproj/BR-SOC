@@ -15,7 +15,7 @@ case $choice in
         $dic_temp'MHSys/elastic.sh'
         whiptail --title "Instalação Concluída" --msgbox "A instalação foi concluída com sucesso." 12 50
         ;;
-    2)
+    0)
         whiptail --title "Instalação Cancelada" --msgbox "A instalação foi cancelada." 12 50
         exit 0
         ;;

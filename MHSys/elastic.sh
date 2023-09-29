@@ -40,8 +40,17 @@ function start_elasticsearch() {
     systemctl start elasticsearch
 }
 function gerate_user_elasticsearch() {
-    /usr/share/elasticsearch/bin/elasticsearch-setup-passwords auto > $install_dir"senhas.txt"
-    senha_elastic=$(grep 'PASSWORD elastic' senhas.txt | awk '{print $NF}')
+    passwords=$(echo -e "Y\n" | /usr/share/elasticsearch/bin/elasticsearch-setup-passwords auto)
+    if [ $? -eq 0 ]; then
+        echo "$passwords" > $install_dir'MHSocSenha.txt'
+        senha_elastic=$(grep 'PASSWORD elastic' $install_dir'MHSocSenha.txt' | awk '{print $NF}')
+        cat $install_dir'MHSocSenha.txt'
+        echo "Por favor, salve as senhas geradas acima em um local seguro."
+        read -p "Pressione Enter para continuar..."
+    else
+        echo "Erro ao gerar senhas"
+        exit 1
+    fi
 }
 if [ "$(id -u)" != "0" ]; then
     echo "Este script deve ser executado como root."
