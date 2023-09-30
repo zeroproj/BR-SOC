@@ -50,6 +50,7 @@ function gerate_user_elasticsearch() {
 function test_system_all(){
     response=$(curl -XGET https://localhost:9200 -u elastic:"$senha_elastic" -k)
     if [[ $response == *"\"name\" : \"MHelastic\""* ]]; then
+        echo "Elastic Configurado"
     else
         exit 100
     fi

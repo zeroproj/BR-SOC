@@ -16,8 +16,8 @@ setup.template.overwrite: true
 setup.ilm.enabled: false
 
 output.elasticsearch.protocol: https
-output.elasticsearch.ssl.certificate: /etc/elasticsearch/certs/elasticsearch.crt
-output.elasticsearch.ssl.key: /etc/elasticsearch/certs/elasticsearch.key
+output.elasticsearch.ssl.certificate: /etc/elasticsearch/certs/MHelastic.crt
+output.elasticsearch.ssl.key: /etc/elasticsearch/certs/MHelastic.key
 output.elasticsearch.ssl.certificate_authorities: /etc/elasticsearch/certs/ca/ca.crt
 output.elasticsearch.ssl.verification_mode: strict
 output.elasticsearch.username: elastic

@@ -32,7 +32,14 @@ function beat_cert() {
 function start_filebeat() {
     systemctl start filebeat
 }
-
+function test_system_all(){
+    response=$(filebeat test output)
+    if [[ $response == *"talk to server... OK"* ]]; then
+        echo "Filebeat Configurado"
+    else
+        exit 200
+    fi
+} 
 if [ "$(id -u)" != "0" ]; then
     echo "Este script deve ser executado como root."
     exit 1
@@ -43,4 +50,5 @@ else
     beat_con
     beat_cert
     start_filebeat
+    test_system_all
 fi
