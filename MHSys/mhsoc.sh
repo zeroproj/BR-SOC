@@ -1,4 +1,6 @@
 #!/bin/bash
+##Erro 1 sEM rOOT
+##Erro 100 Falha isntalaçao Elastic
 clear
 if [ "$(id -u)" != "0" ]; then
     whiptail --title "Autentificação requerida" --msgbox "Este script requer privilégios de administrador. Execute-o como root." 12 50
@@ -13,7 +15,12 @@ case $choice in
     1)
         $dic_temp'MHSys/dep.sh'
         $dic_temp'MHSys/elastic.sh'
-        whiptail --title "Instalação Concluída" --msgbox "A instalação foi concluída com sucesso." 12 50
+        if [ $? -eq 0 ]; then
+            echo "O script Elastic foi concluído com sucesso."
+        else
+            whiptail --title "Instalação Falhou" --msgbox "A instalação não foi concluída. Código de saída: $?" 12 50
+            exit 0
+        fi
         ;;
     0)
         whiptail --title "Instalação Cancelada" --msgbox "A instalação foi cancelada." 12 50

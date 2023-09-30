@@ -52,6 +52,13 @@ function gerate_user_elasticsearch() {
         exit 1
     fi
 }
+function test_system_all(){
+    response=$(curl -XGET https://localhost:9200 -u elastic:"$senha_elastic" -k)
+    if [[ $response == *"\"name\" : \"MHelastic\""* ]]; then
+    else
+        exit 100
+    fi
+} 
 if [ "$(id -u)" != "0" ]; then
     echo "Este script deve ser executado como root."
     exit 1
@@ -61,3 +68,4 @@ config_elasticsearch
 config_cert
 start_elasticsearch
 gerate_user_elasticsearch
+test_system_all
