@@ -15,6 +15,7 @@ case $choice in
     1)
         bash $dic_temp'MHSys/dep.sh' "-a"
         $dic_temp'MHSys/elastic.sh'
+        $dic_temp'MHSys/wserver.sh'
         if [ $? -eq 0 ]; then
             echo "O script Elastic foi concluído com sucesso."
         else
