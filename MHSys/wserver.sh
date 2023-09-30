@@ -8,25 +8,9 @@ function install_wserver() {
     systemctl start wazuh-manager
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 if [ "$(id -u)" != "0" ]; then
     echo "Este script deve ser executado como root."
     exit 1
+else
+    install_wserver
 fi
