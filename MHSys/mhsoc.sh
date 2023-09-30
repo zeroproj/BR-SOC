@@ -13,7 +13,7 @@ choice=$(whiptail --title "MHSOC" --menu "O que você deseja fazer?" 12 50 4 \
     "0" "Cancelar a instalação" 3>&1 1>&2 2>&3)
 case $choice in
     1)
-        $dic_temp'MHSys/dep.sh'
+        bash $dic_temp'MHSys/dep.sh' "-a"
         $dic_temp'MHSys/elastic.sh'
         if [ $? -eq 0 ]; then
             echo "O script Elastic foi concluído com sucesso."
