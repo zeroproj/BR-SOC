@@ -9,7 +9,7 @@ fi
 dic_temp=/opt/MHSOC/
 choice=$(whiptail --title "MHSOC" --menu "O que você deseja fazer?" 12 50 4 \
     "1" "Instalação automatizada" \
-    "2" "Instalacão de Modulos" \
+    "2" "Instalacão Certificado Let's Encrypt" \
     "0" "Cancelar a instalação" 3>&1 1>&2 2>&3)
 case $choice in
     1)
@@ -18,8 +18,17 @@ case $choice in
         $dic_temp'MHSys/wserver.sh'
         $dic_temp'MHSys/filebeat.sh'
         $dic_temp'MHSys/kibana.sh'
+#        if [ $? -eq 0 ]; then
+#            echo "O script Elastic foi concluído com sucesso."
+#        else
+#            whiptail --title "Instalação Falhou" --msgbox "A instalação não foi concluída. Código de saída: $?" 12 50
+#            exit 0
+#        fi
+        ;;
+    2)
+        $dic_temp'MHSys/nginx.sh'
         if [ $? -eq 0 ]; then
-            echo "O script Elastic foi concluído com sucesso."
+            echo "Instalacão Certificado Let's Encrypt foi concluída com sucesso."
         else
             whiptail --title "Instalação Falhou" --msgbox "A instalação não foi concluída. Código de saída: $?" 12 50
             exit 0
