@@ -29,7 +29,7 @@ function kibana_plugin() {
     mkdir /usr/share/kibana/data
     chown -R kibana:kibana /usr/share/kibana
     cd /usr/share/kibana
-    sudo -u kibana /usr/share/kibana/bin/kibana-plugin install $install_dir'MHConf/wazuh_kibana-4.5.2_7.17.12-1.zip'
+    sudo -u kibana /usr/share/kibana/bin/kibana-plugin install file:$install_dir'MHConf/wazuh_kibana-4.5.2_7.17.12-1.zip'
     setcap 'cap_net_bind_service=+ep' /usr/share/kibana/node/bin/node
 }
 function start_kibana() {
