@@ -20,7 +20,10 @@ function beat_con() {
     echo -e "- Instalando Integracão FileBeat"
     senha_elastic=$(grep 'PASSWORD elastic' $install_dir'MHSocSenha.txt' | awk '{print $NF}')
     sed -i "s/output.elasticsearch.password: <elasticsearch_password>/output.elasticsearch.password: $senha_elastic/g" $install_dir'MHConf/filebeat.yml'
+    unlink /etc/filebeat/filebeat.yml
+    ln -s $install_dir'MHConf/filebeat.yml' /etc/filebeat/filebeat.yml
 }
+
 function beat_cert() {
     cp -r /etc/elasticsearch/certs/ca/ /etc/filebeat/certs/
     cp /etc/elasticsearch/certs/MHelastic.crt /etc/filebeat/certs/filebeat.crt
