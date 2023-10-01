@@ -32,6 +32,7 @@ function kibana_con() {
     ln -s $install_dir'MHConf/kibana.yml' /etc/kibana/kibana.yml
     if [ $? -eq 0 ]; then
         echo "- Kibana: Configurado com sucesso"
+        chown root:kibana /etc/kibana/kibana.yml
     else
         echo "- Kibana: Erro ao configurar o Kibana"
         exit 400
@@ -50,9 +51,10 @@ function kibana_plugin() {
         echo "- Kibana: Erro ao configurar o Plugin Kibana"
         exit 400
     fi
+    setcap 'cap_net_bind_service=+ep' /usr/share/kibana/node/bin/node
 }
 function start_kibana() {
-    systemctl start kibana
+    systemctl restart kibana
     if [ $? -eq 0 ]; then
         echo "- Kibana: Serviço iniciado"
     else

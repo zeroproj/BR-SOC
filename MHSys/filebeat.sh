@@ -59,7 +59,7 @@ function beat_cert() {
 }
 
 function start_filebeat() {
-    systemctl start filebeat
+    systemctl restart filebeat
     if [ $? -eq 0 ]; then
         echo "- FileBeat: Serviço iniciado"
     else

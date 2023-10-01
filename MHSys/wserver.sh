@@ -7,7 +7,7 @@ function install_wserver() {
         echo "- Wazuh: Instalado com sucesso"
         systemctl daemon-reload
         systemctl enable wazuh-manager
-        systemctl start wazuh-manager
+        systemctl restart wazuh-manager
         if [ $? -eq 0 ]; then
             echo "- Wazuh: Iniciado com sucesso"
         else

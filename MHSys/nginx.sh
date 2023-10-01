@@ -4,11 +4,12 @@ install_dir="/opt/MHSOC/"
 domain_name=""
 function install_nginx() {
     echo -e "- Instalando Pacotes Nginx e Snapd"
+    apt remove certbot -y
+    apt remove --purge nginx* -y
     apt install nginx snapd -y
     if [ $? -eq 0 ]; then
         echo "- Nginx: Instalado com sucesso"
         snap install core; snap refresh core
-        apt remove certbot -y
     else
         echo "- Nginx: Erro ao instalar o Certbot"
         exit 500

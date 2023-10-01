@@ -55,7 +55,7 @@ function config_cert() {
 }
 
 function start_elasticsearch() {
-    systemctl start elasticsearch
+    systemctl restart elasticsearch
     if [ $? -eq 0 ]; then
         echo "- Elasticsearch: Serviço iniciado"
     else
