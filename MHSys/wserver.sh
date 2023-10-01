@@ -1,11 +1,23 @@
 #!/bin/bash
 install_dir="/opt/MHSOC/"
 function install_wserver() {
-    echo -e "- Instalando Pacotes WServer"
+    echo -e "- Instalando Pacotes Wazuh"
     apt-get install wazuh-manager
-    systemctl daemon-reload
-    systemctl enable wazuh-manager
-    systemctl start wazuh-manager
+    if [ $? -eq 0 ]; then
+        echo "- Wazuh: Instalado com sucesso"
+        systemctl daemon-reload
+        systemctl enable wazuh-manager
+        systemctl start wazuh-manager
+        if [ $? -eq 0 ]; then
+            echo "- Wazuh: Iniciado com sucesso"
+        else
+            echo "- Wazuh: Erro ao iniciar o Wazuh"
+            exit 200
+        fi
+    else
+        echo "- Wazuh: Erro ao instalar o Wazuh"
+        exit 200
+    fi     
 }
 
 if [ "$(id -u)" != "0" ]; then
