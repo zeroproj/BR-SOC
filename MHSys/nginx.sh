@@ -3,19 +3,31 @@
 install_dir="/opt/MHSOC/"
 domain_name=""
 function install_nginx() {
-    echo -e "- Instalando Pacotes Nginx"
-    apt install nginx -y
-    apt install snapd -y
-    snap install core; snap refresh core
-    apt remove certbot -y
+    echo -e "- Instalando Pacotes Nginx e Snapd"
+    apt install nginx snapd -y
+    if [ $? -eq 0 ]; then
+        echo "- Nginx: Instalado com sucesso"
+        snap install core; snap refresh core
+        apt remove certbot -y
+    else
+        echo "- Nginx: Erro ao instalar o Certbot"
+        exit 500
+    fi
     snap install --classic certbot
+    if [ $? -eq 0 ]; then
+        echo "- Certbot: Instalado com sucesso"
+    else
+        echo "- Certbot: Erro ao instalar o Certbot"
+        exit 500
+    fi
 }
+
 function conf_nginx() {
     unlink /etc/nginx/sites-enabled/default
     read -p "Digite o nome de domínio para o servidor: " domain_name
     if [ -z "$domain_name" ]; then
-    echo "O nome de domínio não pode estar em branco."
-    exit 300
+        echo "O nome de domínio não pode estar em branco."
+        exit 500
     fi
     # Conteúdo do arquivo de configuração Nginx
     config_content="server {
@@ -34,7 +46,7 @@ function conf_nginx() {
         echo "Arquivo de configuração Nginx criado em $arquivo_config"
     else
         echo "Erro ao criar o arquivo de configuração Nginx."
-        exit 300
+        exit 500
     fi
 }
 
@@ -47,11 +59,17 @@ function config_cert() {
         systemctl restart kibana
     else
         echo "Erro ao criar o arquivo de configuração Nginx."
-        exit 300
+        exit 500
     fi
 }
 function start_nginx() {
     systemctl restart nginx
+    if [ $? -eq 0 ]; then
+        echo "- Nginx: Configurado com Sucesso."
+    else
+        echo "- Nginx: Falha "
+        exit 500
+    fi
 }
 
 if [ "$(id -u)" != "0" ]; then
@@ -63,11 +81,4 @@ else
     start_nginx
     config_cert
     start_nginx
-    if [ $? -eq 0 ]; then
-        echo "- Nginx: Configurado com Sucesso."
-    else
-        echo "- Nginx: Falha "
-        exit 300
-        
-    fi
 fi

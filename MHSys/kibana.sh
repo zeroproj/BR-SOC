@@ -8,7 +8,7 @@ function install_kibana() {
         systemctl daemon-reload
         systemctl enable kibana
     else
-        echo "- Kibana: Erro ao instalar o Elasticsearch"
+        echo "- Kibana: Erro ao instalar o Kibana"
         exit 400
     fi
 }
