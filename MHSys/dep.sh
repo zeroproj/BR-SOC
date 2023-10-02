@@ -2,6 +2,7 @@
 P_01="$1"
 function install_dependencies() {
     apt-get install apt-transport-https zip unzip lsb-release curl gnupg -y
+    apt-get install -y openjdk-8-jre-headless
 }
 function install_elasticsearch() {
     echo -e "- Configurando Repositorio Elastic"
@@ -13,6 +14,16 @@ function install_wserver() {
     curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | gpg --no-default-keyring --keyring gnupg-ring:/usr/share/keyrings/wazuh.gpg --import && chmod 644 /usr/share/keyrings/wazuh.gpg
     echo "deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.com/4.x/apt/ stable main" | tee -a /etc/apt/sources.list.d/wazuh.list
 }
+function conf_java() {
+    echo JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64" >> /etc/environment
+    export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+}
+
+function conf_cassandra() {
+    curl -fsSL https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
+    echo "deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+}
+
 if [ "$(id -u)" != "0" ]; then
     echo "Este script deve ser executado como root."
     exit 1
@@ -22,6 +33,8 @@ else
         install_dependencies
         install_elasticsearch
         install_wserver
+        conf_java
+        conf_cassandra
         apt update
     elif [ "$P_01" == "-c" ]; then
     echo "O argumento -c foi fornecido."

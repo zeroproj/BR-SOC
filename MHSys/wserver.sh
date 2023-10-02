@@ -12,11 +12,11 @@ function install_wserver() {
             echo "- Wazuh: Iniciado com sucesso"
         else
             echo "- Wazuh: Erro ao iniciar o Wazuh"
-            exit 200
+            exit 600
         fi
     else
         echo "- Wazuh: Erro ao instalar o Wazuh"
-        exit 200
+        exit 600
     fi     
 }
 
