@@ -26,8 +26,6 @@ mkdir -p /opt/thp/thehive/index
 mkdir -p /opt/thp/thehive/files
 mkdir -p /opt/thp/thehive/database
 
-curl https://raw.githubusercontent.com/TheHive-Project/TheHive/master/PGP-PUBLIC-KEY | sudo apt-key add -
-echo 'deb https://deb.thehive-project.org release main' | sudo tee -a /etc/apt/sources.list.d/thehive-project.list
 
 sudo apt-get install thehive4
 chown thehive:thehive /opt/thp/thehive/index
