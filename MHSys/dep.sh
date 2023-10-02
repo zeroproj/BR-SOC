@@ -24,6 +24,11 @@ function conf_cassandra() {
     echo "deb https://debian.cassandra.apache.org 40x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
 }
 
+function install_thehive() {
+    curl https://raw.githubusercontent.com/TheHive-Project/TheHive/master/PGP-PUBLIC-KEY | sudo apt-key add -
+    echo 'deb https://deb.thehive-project.org release main' | sudo tee -a /etc/apt/sources.list.d/thehive-project.list
+}
+
 if [ "$(id -u)" != "0" ]; then
     echo "Este script deve ser executado como root."
     exit 1
@@ -35,6 +40,7 @@ else
         install_wserver
         conf_java
         conf_cassandra
+        install_thehive
         apt update
     elif [ "$P_01" == "-c" ]; then
     echo "O argumento -c foi fornecido."

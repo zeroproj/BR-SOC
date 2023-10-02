@@ -12,13 +12,33 @@ function install_cassandra() {
             echo "- Cassandra: Iniciado com sucesso"
         else
             echo "- Cassandra: Erro ao iniciar o Wazuh"
-            exit 200
+            exit 600
         fi
     else
         echo "- Cassandra: Erro ao instalar o Wazuh"
-        exit 200
+        exit 600
     fi     
 }
+sed -i "s/cluster_name: 'Test Cluster'/cluster_name: 'thp'/" /etc/cassandra/cassandra.yaml
+sed -i "s/^# hints_directory: \/var\/lib\/cassandra\/hints/hints_directory: \/var\/lib\/cassandra\/hints/" /etc/cassandra/cassandra.yaml
+systemctl restart cassandra
+mkdir -p /opt/thp/thehive/index
+mkdir -p /opt/thp/thehive/files
+mkdir -p /opt/thp/thehive/database
+
+curl https://raw.githubusercontent.com/TheHive-Project/TheHive/master/PGP-PUBLIC-KEY | sudo apt-key add -
+echo 'deb https://deb.thehive-project.org release main' | sudo tee -a /etc/apt/sources.list.d/thehive-project.list
+
+sudo apt-get install thehive4
+chown thehive:thehive /opt/thp/thehive/index
+chown thehive:thehive /opt/thp/thehive/files
+chown thehive:thehive /opt/thp/thehive/database
+unlink /etc/thehive/application.conf
+rm /etc/thehive/application.conf
+ln -s $install_dir'MHConf/application.conf' /etc/thehive/application.conf
+chown thehive:thehive /etc/thehive/application.conf
+systemctl restart thehive
+
 
 if [ "$(id -u)" != "0" ]; then
     echo "Este script deve ser executado como root."
@@ -26,3 +46,6 @@ if [ "$(id -u)" != "0" ]; then
 else
     install_wserver
 fi
+
+
+/etc/thehive/application.conf
