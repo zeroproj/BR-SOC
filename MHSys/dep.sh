@@ -21,7 +21,7 @@ function conf_java() {
 
 function conf_cassandra() {
     curl -fsSL https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
-    echo "deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+    echo "deb https://debian.cassandra.apache.org 40x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
 }
 
 if [ "$(id -u)" != "0" ]; then
