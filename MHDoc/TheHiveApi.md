@@ -1,4 +1,8 @@
-Preparando o TheHive
+# Preparando o TheHive
+
+Voce pode encontrar a docmentação original aqui:
+
+[Documentação Wazuh e TheHive](https://wazuh.com/blog/using-wazuh-and-thehive-for-threat-protection-and-incident-response/)
 
 Criamos uma nova organização na interface web do TheHive com uma conta de administrador.
 
