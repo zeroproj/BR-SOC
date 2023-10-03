@@ -36,6 +36,7 @@ rm /etc/thehive/application.conf
 ln -s $install_dir'MHConf/application.conf' /etc/thehive/application.conf
 chown thehive:thehive /etc/thehive/application.conf
 systemctl restart thehive
+pip install thehive4py
 
 
 if [ "$(id -u)" != "0" ]; then

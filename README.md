@@ -14,14 +14,11 @@ A instalação usará a opção de licença básica do Elastic Stack, que conté
 
 [Documentação Wazuh](https://documentation.wazuh.com/current/getting-started/index.html)
 
-
 TheHive: 
 
 TheHive é uma plataforma escalável de Resposta a Incidentes de Segurança 3 em 1, de código aberto e gratuita. Ela foi projetada para simplificar as tarefas de SOCs, CSIRTs, CERTs e profissionais de segurança da informação ao lidar com incidentes de segurança que exigem investigação e ação rápidas.
 
 [Documentação TheHive](https://docs.strangebee.com/thehive/setup/)
-
-
 
 # COMPONENTES EM DESENVOLVIMENTO
 
@@ -32,6 +29,5 @@ Cortex, também de código aberto e gratuito, foi desenvolvido pelo Projeto TheH
 MISP: 
 
 MISP significa Plataforma de Compartilhamento de Informações sobre Malware e Compartilhamento de Ameaças. É uma solução de software de código aberto projetada para coletar, armazenar, distribuir e compartilhar indicadores de segurança cibernética e dados de ameaças relacionados à análise de incidentes e pesquisa de malware. O MISP é adaptado às necessidades de analistas de incidentes, profissionais de segurança, especialistas em TIC e reversores de malware para trocar informações estruturadas de maneira eficiente.
-
 
 Esses componentes são ferramentas essenciais para aprimorar as capacidades de segurança e resposta a incidentes do projeto, e sua natureza de código aberto promove a colaboração e a acessibilidade dentro da comunidade de segurança cibernética.
