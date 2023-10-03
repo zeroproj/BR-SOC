@@ -3,6 +3,7 @@ P_01="$1"
 function install_dependencies() {
     apt-get install apt-transport-https zip unzip lsb-release curl gnupg -y
     apt-get install -y openjdk-8-jre-headless
+    apt install python3-pip -y
 }
 function install_elasticsearch() {
     echo -e "- Configurando Repositorio Elastic"
