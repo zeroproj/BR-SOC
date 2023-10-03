@@ -1,4 +1,4 @@
-# BRSOC
+# BR-SOC
 
 Este é um Projeto Designado para Analistas de Segurança e todas as audiências do SOC que desejam se envolver na implementação e explorar a arquitetura Moderna do SOC. Todos os componentes são usados com base em Projetos de Código Aberto.
 
