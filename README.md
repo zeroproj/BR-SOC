@@ -20,6 +20,7 @@ TheHive é uma plataforma escalável de Resposta a Incidentes de Segurança 3 em
 [Documentação TheHive](https://docs.strangebee.com/thehive/setup/)
 
 
+
 # COMPONENTES EM DESENVOLVIMENTO
 
 Cortex: 
