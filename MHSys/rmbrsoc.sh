@@ -16,3 +16,9 @@ apt purge elasticsearch -y
 rm /var/lib/elasticsearch -rf
 rm /etc/elasticsearch -rf
 rm /usr/share/elasticsearch -rf
+
+apt purge cassandra -y
+unlink /etc/thehive/application.conf
+unlink /var/ossec/integrations/custom-w2thive.py
+unlink /var/ossec/integrations/custom-w2thive
+apt purge thehive4 -y

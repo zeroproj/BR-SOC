@@ -64,7 +64,7 @@ function conf_nginx() {
 
     location / {
         add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains';
-        proxy_pass http://127.0.0.1:9001;
+        proxy_pass http://127.0.0.1:9000;
         proxy_http_version      1.1;
     }
     }
@@ -110,7 +110,7 @@ function config_cert() {
         echo "Certificado criado para o dominio $domain_name"
         sed -i "s/server.port: 443/server.port: 4433/g" $install_dir'MHConf/kibana.yml'
         sed -i "s/server.host: 0.0.0.0/server.host: 127.0.0.1/g" $install_dir'MHConf/kibana.yml'
-        sed -i '$ahttp.port = 9001' $install_dir'MHConf/application.conf'
+        sed -i '$ahttp.port = 9000' $install_dir'MHConf/application.conf'
         sed -i '$ahttp.address = "127.0.0.1"' $install_dir'MHConf/application.conf'
         systemctl restart kibana
         systemctl restart thehive
