@@ -2,6 +2,8 @@
 
 Este é um Projeto Designado para Analistas de Segurança e todas as audiências do SOC que desejam se envolver na implementação e explorar a arquitetura Moderna do SOC. Todos os componentes são usados com base em Projetos de Código Aberto.
 
+<u>Este projeto está rolando como uma bola de neve 🌨️ e o repositório vai ficar mais recheado do que um pão de queijo de Minas! 🧀 Estamos sempre na pilha para novas adições. Se você trombar com algum erro, manda bala e nos avisa, estamos de olho! 👀🤙</u>
+
 # COMPONENTES INTEGRADOS
 Todos os componentes utilizados neste projeto são de código aberto:
 
