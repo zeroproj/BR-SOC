@@ -2,7 +2,7 @@ Preparando o TheHive
 
 Criamos uma nova organização na interface web do TheHive com uma conta de administrador.
 
-![Logo do GitHub](https://github.com/images/logo.png)
+![Logo do GitHub](https://github.com/zeroproj/MHSoc/blob/main/MHDoc/MHIMG/01.png?raw=true)
 
 Interface web do TheHive
 Na organização de teste, criamos um novo usuário com privilégios de administrador da organização.
