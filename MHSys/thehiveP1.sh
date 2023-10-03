@@ -39,12 +39,16 @@ systemctl restart thehive
 pip install thehive4py
 
 
+
+The default admin user is admin@thehive.local with password secret. It is recommended to change the default password.
+
+
+
+
+
 if [ "$(id -u)" != "0" ]; then
     echo "Este script deve ser executado como root."
     exit 1
 else
     install_wserver
 fi
-
-
-/etc/thehive/application.conf
