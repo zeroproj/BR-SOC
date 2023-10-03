@@ -5,8 +5,10 @@ Este é um Projeto Designado para Analistas de Segurança e todas as audiências
 # COMPONENTES
 Todos os componentes utilizados neste projeto são de código aberto:
 
-Wazuh com o Elastic Stack: Esta é uma plataforma SIEM de código aberto.
+Wazuh com o Elastic Stack: 
+Esta é uma plataforma SIEM de código aberto.
 A instalação usará a opção de licença básica do Elastic Stack, que contém tudo incluído na versão de código aberto sob a licença Apache 2.0, além de recursos adicionais, como recursos do Elastic Stack Security, alertas do Kibana e outros. Este guia inclui instruções para instalar o Wazuh 4.5.2 e o Elastic Stack 7.17.12.
+
 [Documentação Wazuh](https://documentation.wazuh.com/current/getting-started/index.html)
 
 
