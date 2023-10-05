@@ -11,7 +11,14 @@ choice=$(whiptail --title "MHSOC" --menu "BRSOC - ASSITENTE DE CONFIGURACAO" 12 
     "0" "Voltar" 3>&1 1>&2 2>&3)
 case $choice in
     1)  
-        echo ""
+        $dic_temp'MHSys/mhupdate.sh'
+        if [ $? -eq 0 ]; then
+            echo "Atualização concluído com sucesso."
+        else
+            whiptail --title "Atualização Falhou" --msgbox "A Atualização não foi concluída. Código de saída: $?" 12 50
+            exit 0
+        fi
+        bash $dic_temp'MHSys/mhmanutencao.sh'
         ;;
     2)
         echo ""
@@ -20,8 +27,7 @@ case $choice in
         echo ""
         ;;
     0)
-        whiptail --title "Instalação Cancelada" --msgbox "A instalação foi cancelada." 12 50
-        exit 0
+        ash $dic_temp'MHSys/mhsoc.sh'
         ;;
     *)
         whiptail --title "Escolha Inválida" --msgbox "Escolha inválida. A instalação foi cancelada." 12 50
