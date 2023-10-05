@@ -8,18 +8,18 @@ source_dir_conf=$destination_dir'MHConf'
 destination_dir_conf=$install_dir'MHConf'
 if curl --output /dev/null --silent --head --fail "$remote_url"; then
     # Baixa o arquivo remoto
-    remote_version=$(curl -s "$remote_url")
+    remote_version=$(curl -s $remote_url)
+    echo $remote_version
     if [ -e "$local_file" ]; then
         local_version=$(cat "$local_file")
         # Compara as versões
         if [ "$remote_version" -eq "$local_version" ]; then # As versões são iguais
             whiptail --title "Update BRSOC" --msgbox "Sistema atualizado." 12 50
         elif [ "$remote_version" -gt "$local_version" ]; then # A versão remota é maior
-            whiptail --title "Update BRSOC" --msgbox "Sistema será atualizado." 12 5
+            whiptail --title "Update BRSOC" --msgbox "Sistema será atualizado." 12 50
             rm $destination_dir -rf
             mkdir -p "$destination_dir"
             git clone "$github_repo" "$destination_dir"
-
             for file in "$source_dir_conf"/*; do
                 if [ -e "$destination_dir_conf/$(basename "$file")" ]; then
                     echo "O arquivo '$(basename "$file")' de configuraçao já esta atualizado no diretório de destino."
