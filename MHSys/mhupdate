@@ -28,7 +28,6 @@ if curl --output /dev/null --silent --head --fail "$remote_url"; then
                     echo "O arquivo '$(basename "$file")' de configuraçao foi atualizado no diretório de destino."
                 fi
             done
-
             rm $install_dir'MHSys/' -rf
             mv $destination_dir'MHSys' $install_dir
             unlink /usr/local/bin/MHSoc
