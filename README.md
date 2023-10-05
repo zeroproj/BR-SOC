@@ -1,6 +1,6 @@
-# BRSOC
+# BR-SOC
 
-Este é um Projeto Designado para Analistas de Segurança e todas as audiências do SOC que desejam se envolver na implementação e explorar a arquitetura Moderna do SOC. Todos os componentes são usados com base em Projetos de Código Aberto.
+Preparem-se, pessoal! Estou embarcando em uma jornada de criar a minha própria arquitetura SOC 😄, e, claro, estou usando tecnologias de código aberto para fazer isso. É como construir um robô de segurança cibernética com peças de LEGO, mas em vez de peças, estou usando programas de código aberto. 😄🔒
 
 Este projeto está rolando como uma bola de neve 🌨️ e o repositório vai ficar mais recheado do que um pão de queijo de Minas! 🧀 Estamos sempre na pilha para novas adições. Se você trombar com algum erro, manda bala e nos avisa, estamos de olho! 👀🤙
 
