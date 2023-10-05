@@ -38,7 +38,7 @@ function cassandra_conf(){
 }
 
 function install_thehive(){
-    apt-get install thehive4
+    apt-get install thehive -y
     if [ $? -eq 0 ]; then
         echo "- Thehive: Instalado com sucesso"
     else
