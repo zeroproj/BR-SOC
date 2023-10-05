@@ -7,8 +7,9 @@ dic_temp=/opt/MHSOC/
 choice=$(whiptail --title "MHSOC" --menu "BRSOC - ASSITENTE DE CONFIGURACAO" 12 50 4 \
     "1" "Instalação BRSOC" \
     "2" "Instalacão TheHive" \
-    "3" "Instalacão Certificado Let's Encrypt" \
-    "4" "Manutenção" \
+    "3" "Configuração de Modulos" \
+    "4" "Instalacão Certificado Let's Encrypt" \
+    "5" "Manutenção" \
     "0" "Cancelar a instalação" 3>&1 1>&2 2>&3)
 case $choice in
     1)
@@ -69,6 +70,10 @@ case $choice in
         fi
         ;;
     3)
+        whiptail --title "Configuração de Modulos" --msgbox "EM DESENVOLVIMENTO" 12 50
+        bash $dic_temp'MHSys/mhsoc.sh'
+        ;;
+    4)
         $dic_temp'MHSys/nginx.sh'
         if [ $? -eq 0 ]; then
             echo "Instalacão Certificado Let's Encrypt foi concluída com sucesso."
@@ -79,7 +84,7 @@ case $choice in
         bash $dic_temp'MHSys/mhsoc.sh'
         ;;
 
-    4)
+    5)
         $dic_temp'MHSys/mhmanutencao.sh'
         #if [ $? -eq 0 ]; then
         #    echo "Atualização concluído com sucesso."

@@ -27,7 +27,7 @@ case $choice in
         echo ""
         ;;
     0)
-        ash $dic_temp'MHSys/mhsoc.sh'
+        bash $dic_temp'MHSys/mhsoc.sh'
         ;;
     *)
         whiptail --title "Escolha Inválida" --msgbox "Escolha inválida. A instalação foi cancelada." 12 50
