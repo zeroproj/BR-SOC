@@ -56,7 +56,6 @@ case $choice in
             whiptail --title "Instalação Falhou" --msgbox "A instalação não foi concluída. Código de saída: $?" 12 50
             exit 0
         fi
-        bash $dic_temp'MHSys/mhsoc.sh'
         ;;
     2)
         $dic_temp'MHSys/thehiveP1.sh'
@@ -75,7 +74,6 @@ case $choice in
             whiptail --title "Instalação Falhou" --msgbox "A instalação não foi concluída. Código de saída: $?" 12 50
             exit 0
         fi
-        bash $dic_temp'MHSys/mhsoc.sh'
         ;;
     0)
         whiptail --title "Instalação Cancelada" --msgbox "A instalação foi cancelada." 12 50
