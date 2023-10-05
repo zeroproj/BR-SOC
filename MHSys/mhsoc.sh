@@ -86,8 +86,3 @@ case $choice in
         exit 1
         ;;
 esac
-#if [ $? -eq 0 ]; then
-#    echo "O script dep.sh foi concluído com sucesso."
-#else
-#    echo "O script dep.sh falhou. Código de saída: $?"
-#fi
