@@ -21,10 +21,12 @@ case $choice in
         bash $dic_temp'MHSys/mhmanutencao.sh'
         ;;
     2)
-        echo ""
+        whiptail --title "Reparar BRSOC" --msgbox "EM DESENVOLVIMENTO" 12 50
+        bash $dic_temp'MHSys/mhmanutencao.sh'
         ;;
     3)
-        echo ""
+        whiptail --title "Remover BRSOC" --msgbox "EM DESENVOLVIMENTO" 12 50
+        bash $dic_temp'MHSys/mhmanutencao.sh'
         ;;
     0)
         bash $dic_temp'MHSys/mhsoc.sh'
@@ -34,8 +36,3 @@ case $choice in
         exit 1
         ;;
 esac
-#if [ $? -eq 0 ]; then
-#    echo "O script dep.sh foi concluído com sucesso."
-#else
-#    echo "O script dep.sh falhou. Código de saída: $?"
-#fi
