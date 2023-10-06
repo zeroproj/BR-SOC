@@ -48,7 +48,7 @@ function conf_api(){
   sed -i '/<\/ossec_config>/i \
     <integration>\
       <name>custom-w2thive</name>\
-      <hook_url>127.0.0.1:9000</hook_url>\
+      <hook_url>http://127.0.0.1:9001</hook_url>\
       <api_key>'"$api_key"'</api_key>\
       <alert_format>json</alert_format>\
     </integration>' "$config_file"
